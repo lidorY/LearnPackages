@@ -22,9 +22,18 @@ jobs:
         with:
           images: |
             ghcr.io/${{ github.repository }}/my_image
+            ghcr.io/${{ github.repository }}/my_image2
           github-token: ${{ secrets.GITHUB_TOKEN }}
       - name: Build and push Docker image
         uses: docker/build-push-action@v3
         with:
           push: true
           file: "Dockerfile.hello-world"
+          tags: ${{ steps.meta.outputs.tags }}
+      - name: Build and push Docker image2
+        uses: docker/build-push-action@v3
+        with:
+          push: true
+          file: "Dockerfile.hello-world2"
+          tags: ${{ steps.meta.outputs.tags }}
+      
