@@ -10,8 +10,6 @@ jobs:
     permissions:
       packages: write
     steps:
-      - name: Check out the repo
-        uses: actions/checkout@v3
       - name: Log in to the Container registry
         uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
         with:
@@ -25,18 +23,9 @@ jobs:
           images: |
             ghcr.io/${{ github.repository }}/my_image
           github-token: ${{ secrets.GITHUB_TOKEN }}
-      # - name: Login to image repository
-      #   if: github.ref_type == 'tag'
-      #   uses: docker/login-action@v2
-      #   with:
-      #     registry: ghcr.io
-      #     username: ${{ github.actor }}
-      #     password: ${{ secrets.GHCR_TOKEN }}
       - name: Build and push Docker image
         uses: docker/build-push-action@v3
         with:
           push: true
-          # cache-from: type=gha
-          # cache-to: type=gha,mode=max
           file: "Dockerfile.hello-world"
           tags: ${{ steps.meta.outputs.tags }}
