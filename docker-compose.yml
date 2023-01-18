@@ -3,7 +3,7 @@ version: '3'
 services:
   serv:
     hostname: "test"
-    image: ghcr.io/lidory/learnpackages/my_image:latest
+    image: ghcr.io/lidory/learnpackages/my_image
     # build:
     #   context: .
     #   dockerfile: Dockerfile.hello-world
