@@ -9,7 +9,10 @@ inputs:
   image-name: # id of input
     description: 'The name of the image that will be generated'
     required: true
-
+  username: # id of input
+    description: 'The github user name. Should ALWAYS be: github.actor'
+  password: # id of input
+    description: 'The github user name. Should ALWAYS be: secrets.GITHUB_TOKEN'
 
 runs:
   using: 'composite'
@@ -17,14 +20,14 @@ runs:
     - uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
       with:
         registry: ghcr.io
-        username: ${{ github.actor }}
-        password: ${{ secrets.GITHUB_TOKEN }}
+        username: ${{ inputs.username }}
+        password: ${{ inputs.password }}
     - id: meta
       uses: docker/metadata-action@v4
       with:
         images: |
           ghcr.io/${{ github.repository }}/${{ inputs.image-name}}
-        github-token: ${{ secrets.GITHUB_TOKEN }}
+        github-token: ${{ inputs.password }}
     - uses: docker/build-push-action@v3
       with:
         push: true
