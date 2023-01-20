@@ -21,9 +21,3 @@ jobs:
     - name: run
       run: |
         docker-compose -f docker-compose.yml up
-    - name: use action
-      uses: ./.github/actions/hello-world
-      with:
-        who-to-greet: to you!
-
-

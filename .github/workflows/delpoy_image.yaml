@@ -10,30 +10,9 @@ jobs:
     permissions:
       packages: write
     steps:
-      - name: Log in to the Container registry
-        uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
+      - name: Upload Doker Image
+        uses: ./.github/actions/build-push-docker-image
         with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-      - name: Extract metadata (tags, labels) for Docker
-        id: meta
-        uses: docker/metadata-action@v4
-        with:
-          images: |
-            ghcr.io/${{ github.repository }}/my_image
-            ghcr.io/${{ github.repository }}/my_image2
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-      - name: Build and push Docker image
-        uses: docker/build-push-action@v3
-        with:
-          push: true
-          file: "Dockerfile.hello-world"
-          tags: ${{ steps.meta.outputs.tags }}
-      - name: Build and push Docker image2
-        uses: docker/build-push-action@v3
-        with:
-          push: true
-          file: "Dockerfile.hello-world2"
-          tags: ${{ steps.meta.outputs.tags }}
+          image-name: my_image
+          docker-file-path: Dockerfile.hello-world
       

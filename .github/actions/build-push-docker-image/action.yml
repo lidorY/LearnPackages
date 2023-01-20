@@ -1,0 +1,32 @@
+name: Push Docker Image
+decription: 'Build and push to GitHub package a specified docker image'
+
+
+inputs:
+  docker-file-path: # id of input
+    description: 'Dockerfile path to build the image from.'
+    required: true
+  image-name: # id of input
+    description: 'The name of the image that will be generated'
+    required: true
+
+
+runs:
+  using: 'composite'
+  steps:
+    - uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
+      with:
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+    - id: meta
+      uses: docker/metadata-action@v4
+      with:
+        images: |
+          ghcr.io/${{ github.repository }}/${{ inputs.image-name}}
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+    - uses: docker/build-push-action@v3
+      with:
+        push: true
+        file: "${{ inputs.docker-file-path}}"
+        tags: ${{ steps.meta.outputs.tags }}
