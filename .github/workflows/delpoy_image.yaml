@@ -11,7 +11,7 @@ jobs:
       packages: write
     steps:
       - name: Upload Doker Image
-        uses: ./.github/actions/build_push_docker_image/
+        uses: ./.github/actions/upload_image
         with:
           image-name: my_image
           docker-file-path: Dockerfile.hello-world
