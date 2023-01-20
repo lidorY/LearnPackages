@@ -11,8 +11,10 @@ inputs:
     required: true
   username: # id of input
     description: 'The github user name. Should ALWAYS be: github.actor'
+    required: true
   password: # id of input
     description: 'The github user name. Should ALWAYS be: secrets.GITHUB_TOKEN'
+    required: true
 
 runs:
   using: 'composite'
