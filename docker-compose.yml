@@ -7,7 +7,3 @@ services:
   serv2:
     hostname: "test"
     image: ghcr.io/lidory/learnpackages/my_image2:main
-    # build:
-    #   context: .
-    #   dockerfile: Dockerfile.hello-world
-    # image: my_image
