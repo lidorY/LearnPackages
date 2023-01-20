@@ -10,7 +10,7 @@ jobs:
     permissions:
       packages: write
     steps:
-      - name: Upload Doker Image
+      - name: Upload
         uses: ./.github/actions/upload_image
         with:
           image-name: my_image
