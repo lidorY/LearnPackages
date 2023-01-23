@@ -22,7 +22,7 @@ jobs:
         uses: tj-actions/changed-files@v34
       - name: Upload Image 1
         uses: ./.github/actions/upload_image
-        # if: 'Dockerfile.hello-world' in steps.changed-files.outputs.all_changed_files
+        if: 'Dockerfile.hello-world' in steps.changed-files.outputs.all_changed_files
         with:
           image-name: my_image
           docker-file-path: Dockerfile.hello-world
@@ -30,7 +30,7 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: Upload Image 2
         uses: ./.github/actions/upload_image
-        # if: 'Dockerfile.hello-world2' in steps.changed-files.outputs.all_changed_files
+        if: 'Dockerfile.hello-world2' in steps.changed-files.outputs.all_changed_files
         with:
           image-name: my_image2
           docker-file-path: Dockerfile.hello-world2
