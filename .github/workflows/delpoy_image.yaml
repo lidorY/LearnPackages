@@ -30,7 +30,6 @@ jobs:
 
       - name: Upload Image 1
         uses: ./.github/actions/upload_image
-        if: 'Dockerfile.hello-world' in steps.changed-files.outputs.all_changed_files
         with:
           image-name: my_image
           docker-file-path: Dockerfile.hello-world
