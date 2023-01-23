@@ -30,8 +30,18 @@ jobs:
 
       - name: Upload Image 1
         uses: ./.github/actions/upload_image
+        if: contains(steps.changed-files.outputs.all_changed_files, 'Dockerfile.hello-world')
         with:
           image-name: my_image
           docker-file-path: Dockerfile.hello-world
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload Image 2
+        uses: ./.github/actions/upload_image
+        with:
+          image-name: my_image2
+          docker-file-path: Dockerfile.hello-world2
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      
