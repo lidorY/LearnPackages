@@ -9,19 +9,22 @@ inputs:
   image-name: 
     description: 'The name of the image that will be generated'
     required: true
-  # Since we can;t access the repository env variables from inside an action
-  #   we provide them as these variables.
+  # Since we can't access the repository env variables from inside an action
+  #   we provide them as variables here.
   username: 
     description: 'The github user name. Should ALWAYS be: github.actor'
     required: true
   password: 
     description: 'The github user name. Should ALWAYS be: secrets.GITHUB_TOKEN'
     required: true
+  context: 
+    description: 'Context value for the docker build operation'
+    default: "."
 
 runs:
   using: 'composite'
   steps:
-    - uses: docker/login-action@v2
+    - uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
       with:
         # The GitHub package regitry URL
         registry: ghcr.io
@@ -38,3 +41,4 @@ runs:
         push: true
         file: "${{ inputs.docker-file-path}}"
         tags: ${{ steps.meta.outputs.tags }}
+        context: ${{ inputs.context }}
