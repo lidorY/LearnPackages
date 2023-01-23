@@ -3,7 +3,7 @@ name: Publish Tests container Docker Image
 on:
   push:
     branches:
-      - master
+      - main
   workflow_dispatch: {}
 
 jobs:
