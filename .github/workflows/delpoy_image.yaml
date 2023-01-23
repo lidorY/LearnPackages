@@ -1,6 +1,9 @@
 name: Publish Tests container Docker Image
 
 on:
+  push:
+    branches:
+      - master
   workflow_dispatch: {}
 
 jobs:
@@ -11,9 +14,14 @@ jobs:
       packages: write
     steps:
       - name: Checkout
-        uses: actions/checkout@v2 # In order to access the local action
+        uses: actions/checkout@v3 # In order to access the local action
+      - name: Get changed files
+        id: changed-files
+        uses: tj-actions/changed-files@v35
+        
       - name: Upload Image 1
         uses: ./.github/actions/upload_image
+        if: 'Dockerfile.hello-world' in steps.changed-files.outputs.all_changed_files
         with:
           image-name: my_image
           docker-file-path: Dockerfile.hello-world
@@ -21,6 +29,7 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: Upload Image 2
         uses: ./.github/actions/upload_image
+        if: 'Dockerfile.hello-world2' in steps.changed-files.outputs.all_changed_files
         with:
           image-name: my_image2
           docker-file-path: Dockerfile.hello-world2
