@@ -1,2 +1,3 @@
 FROM alpine
+RUN /test.sh
 CMD ["echo", "Hello New action!"]
