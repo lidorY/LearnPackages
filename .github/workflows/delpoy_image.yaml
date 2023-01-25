@@ -36,7 +36,7 @@ jobs:
           docker-file-path: Dockerfile.hello-world
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-          context: '../../'
+          context: .
 
       - name: Upload Image 2
         uses: ./.github/actions/upload_image

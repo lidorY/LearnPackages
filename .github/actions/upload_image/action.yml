@@ -19,7 +19,7 @@ inputs:
     required: true
   context: 
     description: 'Context value for the docker build operation'
-    default: "."
+    default: .
 
 runs:
   using: 'composite'
@@ -30,15 +30,15 @@ runs:
         registry: ghcr.io
         username: ${{ inputs.username }}
         password: ${{ inputs.password }}
-    - uses: docker/metadata-action@v4
-      id: meta
+    - id: meta
+      uses: docker/metadata-action@v4
       with:
         images: |
           ghcr.io/${{ github.repository }}/${{ inputs.image-name}}
         github-token: ${{ inputs.password }}
     - uses: docker/build-push-action@v3
       with:
-        context: .
         push: true
         file: "${{ inputs.docker-file-path}}"
         tags: ${{ steps.meta.outputs.tags }}
+        context: ${{ inputs.context }}
