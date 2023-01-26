@@ -3,7 +3,7 @@ FROM alpine
 # CMD ["echo", "Hello New action!"]
 
 # Copies your code file from your action repository to the filesystem path `/` of the container
-COPY test.sh /test.sh
+COPY ./test.sh ./test.sh
 
 # Executes `entrypoint.sh` when the Docker container starts up
-ENTRYPOINT ["/test.sh"]
+ENTRYPOINT ["./test.sh"]
