@@ -33,19 +33,16 @@ jobs:
           changed_files="${changed_files//$'\n'/', '}"
           changed_files="${changed_files//$'\r'/', '}"
           echo "all=$changed_files" >> $GITHUB_OUTPUT
-      
-      - name: test-stage
-        run: echo ${{ steps.files.outputs.all }}
 
-      # - name: Upload Image 1
-      #   uses: ./.github/actions/upload_image
-      #   if: contains(steps.files.outputs.all, 'ttt/Dockerfile.hello-world')
-      #   with:
-      #     image-name: my_image
-      #     docker-file-path: ttt/Dockerfile.hello-world
-      #     username: ${{ github.actor }}
-      #     password: ${{ secrets.GITHUB_TOKEN }}
-      #     context: ./ttt
+      - name: Upload Image 1
+        uses: ./.github/actions/upload_image
+        if: contains(steps.files.outputs.all, 'ttt/Dockerfile.hello-world')
+        with:
+          image-name: my_image
+          docker-file-path: ttt/Dockerfile.hello-world
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+          context: ./ttt
 
       # - name: Upload Image 2
       #   uses: ./.github/actions/upload_image
