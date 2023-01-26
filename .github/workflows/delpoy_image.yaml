@@ -28,11 +28,11 @@ jobs:
         uses: ./.github/actions/list_changed_files
       
       - name: test
-        run: echo val ${{ steps.files.outputs.changes }}
+        run: echo ${{ steps.files.outputs.changes }}
 
       - name: Upload Image 1
         uses: ./.github/actions/upload_image
-        if: contains(${{ steps.files.outputs.changes }}, 'ttt/Dockerfile.hello-world')
+        if: contains(steps.files.outputs.changes, 'ttt/Dockerfile.hello-world')
         with:
           image-name: my_image
           docker-file-path: ttt/Dockerfile.hello-world
