@@ -25,7 +25,7 @@ jobs:
 
       # Example 1
       - id: files
-      - name: (CI) Dependencies update check
+        name: (CI) Dependencies update check
         run: |
           current_commit=`git log -n 1 --pretty=format:%H`
           echo $current_commit
