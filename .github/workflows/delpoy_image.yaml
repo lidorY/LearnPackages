@@ -24,13 +24,12 @@ jobs:
           fetch-depth: 0  # OR "2" -> To retrieve the preceding commit.
 
       # Example 1
-      - name: Get changed files
-        id: changed-files
-        uses: tj-actions/changed-files@v35
+      - id: files
+        uses: jitterbit/get-changed-files@v1
 
       - name: Upload Image 1
         uses: ./.github/actions/upload_image
-        if: contains(steps.changed-files.outputs.all_changed_files, 'ttt/Dockerfile.hello-world')
+        if: contains(steps.files.outputs.all, 'ttt/Dockerfile.hello-world')
         with:
           image-name: my_image
           docker-file-path: ttt/Dockerfile.hello-world
@@ -38,12 +37,12 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
           context: ./ttt
 
-      - name: Upload Image 2
-        uses: ./.github/actions/upload_image
-        if: contains(steps.changed-files.outputs.all_changed_files, 'Dockerfile.hello-world2')
-        with:
-          image-name: my_image2
-          docker-file-path: Dockerfile.hello-world2
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+      # - name: Upload Image 2
+      #   uses: ./.github/actions/upload_image
+      #   if: contains(steps.changed-files.outputs.all_changed_files, 'Dockerfile.hello-world2')
+      #   with:
+      #     image-name: my_image2
+      #     docker-file-path: Dockerfile.hello-world2
+      #     username: ${{ github.actor }}
+      #     password: ${{ secrets.GITHUB_TOKEN }}
       
