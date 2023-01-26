@@ -29,8 +29,10 @@ jobs:
         run: |
           current_commit=`git log -n 1 --pretty=format:%H`
           changed_files=`git diff-tree --no-commit-id --name-only -r $current_commit`
-          echo $changed_files >> $GITHUB_OUTPUT
-      - run: echo ${{ steps.files.outputs.changed_files }}
+          echo "all=$changed_files" >> $GITHUB_OUTPUT
+      
+      - name: test-stage
+        run: echo ${{ steps.files.outputs.all }}
 
       # - name: Upload Image 1
       #   uses: ./.github/actions/upload_image
