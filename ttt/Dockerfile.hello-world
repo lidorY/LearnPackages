@@ -1,6 +1,6 @@
 FROM alpine
 # RUN /test.sh
-# CMD ["echo", "Hello New action!"]
+CMD ["echo", "Hello New action!"]
 
 # Copies your code file from your action repository to the filesystem path `/` of the container
 COPY ./test.sh ./test.sh
