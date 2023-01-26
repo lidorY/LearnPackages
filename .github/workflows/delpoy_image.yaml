@@ -33,7 +33,7 @@ jobs:
         #if: contains(steps.changed-files.outputs.all_changed_files, 'Dockerfile.hello-world')
         with:
           image-name: my_image
-          docker-file-path: Dockerfile.hello-world
+          docker-file-path: ttt/Dockerfile.hello-world
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
           context: .
