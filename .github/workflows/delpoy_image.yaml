@@ -29,7 +29,10 @@ jobs:
         run: |
           current_commit=`git log -n 1 --pretty=format:%H`
           changed_files=`git diff-tree --no-commit-id --name-only -r $current_commit`
-          echo "all=$(git diff-tree --no-commit-id --name-only -r $current_commit)" >> $GITHUB_OUTPUT
+          changed_files="${changed_files//'%'/'%25'}"
+          changed_files="${changed_files//$'\n'/'%0A'}"
+          changed_files="${changed_files//$'\r'/'%0D'}"
+          echo "all=$changed_files" >> $GITHUB_OUTPUT
       
       - name: test-stage
         run: echo ${{ steps.files.outputs.all }}
