@@ -1,0 +1,20 @@
+name: List Changed Files
+decription: 'Generate list of the changed files in the latest commit'
+
+outputs:
+  all:
+    description: "List of the file changed delimited by a ','"
+    value: ${{ steps.files.all }}
+
+runs:
+  using: 'composite'
+  steps:
+    - id: files
+      name: List Changed Files
+      run: |
+          current_commit=`git log -n 1 --pretty=format:%H`
+          changed_files=`git diff-tree --no-commit-id --name-only -r $current_commit`
+          changed_files="${changed_files//'%'/', '}"
+          changed_files="${changed_files//$'\n'/', '}"
+          changed_files="${changed_files//$'\r'/', '}"
+          echo "all=$changed_files" >> $GITHUB_OUTPUT

@@ -24,19 +24,15 @@ jobs:
           fetch-depth: 0  # OR "2" -> To retrieve the preceding commit.
 
       # Example 1
-      - id: files
-        name: (CI) Dependencies update check
-        run: |
-          current_commit=`git log -n 1 --pretty=format:%H`
-          changed_files=`git diff-tree --no-commit-id --name-only -r $current_commit`
-          changed_files="${changed_files//'%'/', '}"
-          changed_files="${changed_files//$'\n'/', '}"
-          changed_files="${changed_files//$'\r'/', '}"
-          echo "all=$changed_files" >> $GITHUB_OUTPUT
+      - id: changed-files
+        uses: ./.github/actions/list_changed_files
+      
+      - name: test
+        run: echo ${{ steps.changed-files.outputs.all }}
 
       - name: Upload Image 1
         uses: ./.github/actions/upload_image
-        if: contains(steps.files.outputs.all, 'ttt/Dockerfile.hello-world')
+        if: contains(steps.changed-files.outputs.all, 'ttt/Dockerfile.hello-world')
         with:
           image-name: my_image
           docker-file-path: ttt/Dockerfile.hello-world
