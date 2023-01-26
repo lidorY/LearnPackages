@@ -30,7 +30,7 @@ jobs:
 
       - name: Upload Image 1
         uses: ./.github/actions/upload_image
-        #if: contains(steps.changed-files.outputs.all_changed_files, 'Dockerfile.hello-world')
+        if: contains(steps.changed-files.outputs.all_changed_files, 'ttt/Dockerfile.hello-world')
         with:
           image-name: my_image
           docker-file-path: ttt/Dockerfile.hello-world
