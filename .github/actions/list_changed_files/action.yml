@@ -2,9 +2,9 @@ name: List Changed Files
 decription: 'Generate list of the changed files in the latest commit'
 
 outputs:
-  all:
+  changes:
     description: "List of the file changed delimited by a ','"
-    value: ${{ steps.files.all }}
+    value: ${{ steps.files.outputs.all }}
 
 runs:
   using: 'composite'
