@@ -31,4 +31,4 @@ jobs:
         mypy . --show-error-codes
         echo "${{ env.TEST }}"
         echo $TEST
-        echo ${{ jobs.end2end_test.container.env.TEST }}
+        
