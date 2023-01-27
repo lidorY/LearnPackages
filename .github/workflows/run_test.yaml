@@ -11,6 +11,8 @@ jobs:
       packages: read
    container:
      image: ghcr.io/lidory/learnpackages/my_image:main
+     env:
+      TEST: LIDOR
      credentials:
        username: ${{ github.actor }}
        password: ${{ secrets.GITHUB_TOKEN }}
