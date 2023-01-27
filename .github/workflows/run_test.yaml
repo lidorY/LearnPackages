@@ -18,6 +18,9 @@ jobs:
         registry: ghcr.io
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
-    - name: run
-      run: |
-        docker-compose -f docker-compose.yml up
+    # - name: run
+    #   run: |
+    #     docker-compose -f docker-compose.yml up
+    - name: Analysing the code with mypy
+        run: |
+          mypy . --show-error-codes

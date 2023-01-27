@@ -1,9 +1,5 @@
-FROM alpine
-# RUN /test.sh
-# CMD ["echo", "Hello New action!"]
+FROM python:3.8.16-slim-bullseye
 
-# Copies your code file from your action repository to the filesystem path `/` of the container
-COPY ./test.sh ./test.sh
+RUN python -m pip install --upgrade pip
+RUN pip install mypy flake8 coverage
 
-# Executes `entrypoint.sh` when the Docker container starts up
-ENTRYPOINT ["./test.sh"]
