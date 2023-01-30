@@ -15,7 +15,7 @@ jobs:
       packages: read
    container:
      image: ghcr.io/lidory/learnpackages/my_image:main
-     env: $env
+     env: $HOME
      credentials:
        username: ${{ github.actor }}
        password: ${{ secrets.GITHUB_TOKEN }}
