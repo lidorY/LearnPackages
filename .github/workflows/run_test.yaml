@@ -3,11 +3,8 @@ name: run test
 on:
   workflow_dispatch: {}
 
-
-continer_template:
-  image: ghcr.io/lidory/learnpackages/my_image:main
-  env:
-    TEST: LIDOR
+env: &env
+  TEST: LIDOR
 
 
 jobs:
@@ -17,7 +14,8 @@ jobs:
    permissions:
       packages: read
    container:
-     <<: *continer_template
+     image: ghcr.io/lidory/learnpackages/my_image:main
+     env: *env
      credentials:
        username: ${{ github.actor }}
        password: ${{ secrets.GITHUB_TOKEN }}
