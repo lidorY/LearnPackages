@@ -3,10 +3,6 @@ name: run test
 on:
   workflow_dispatch: {}
 
-env: 
-  HOME: /home/runner
-  WORKSPACE: /github/workspace
-
 jobs:
  end2end_test:
    name: test
@@ -30,6 +26,7 @@ jobs:
     # - name: run
     #   run: |
     #     docker-compose -f docker-compose.yml up
+    - uses: ./.github/actions/set_vars
     - name: Analysing the code with mypy
       run: |
         mypy . --show-error-codes

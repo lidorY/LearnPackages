@@ -1,0 +1,11 @@
+name: Set Environment Variables
+decription: 'Configure github env variables for core setup'
+
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Set environment variables for tests
+      shell: bash
+      run: |
+        echo "TEST=lidor" >> $GITHUB_ENV
