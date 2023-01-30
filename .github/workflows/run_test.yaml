@@ -3,9 +3,9 @@ name: run test
 on:
   workflow_dispatch: {}
 
-# env: &env
-#   HOME: /home/runner
-#   WORKSPACE: /github/workspace
+env: 
+  HOME: /home/runner
+  WORKSPACE: /github/workspace
 
 jobs:
  end2end_test:
@@ -15,7 +15,7 @@ jobs:
       packages: read
    container:
      image: ghcr.io/lidory/learnpackages/my_image:main
-    #  env: *env
+     env: ${{ env.home }}
      credentials:
        username: ${{ github.actor }}
        password: ${{ secrets.GITHUB_TOKEN }}
