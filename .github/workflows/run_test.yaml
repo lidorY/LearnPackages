@@ -4,8 +4,8 @@ on:
   workflow_dispatch: {}
 
 env: &env
-  TEST: LIDOR
-
+  HOME: /home/runner
+  WORKSPACE: /github/workspace
 
 jobs:
  end2end_test:
@@ -35,5 +35,5 @@ jobs:
       run: |
         mypy . --show-error-codes
         echo "${{ env.TEST }}"
-        echo $TEST
+        echo $HOME
         
