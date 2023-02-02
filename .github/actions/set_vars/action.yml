@@ -9,4 +9,3 @@ runs:
       shell: bash
       run: |
         echo "TEST=lidor" >> $GITHUB_ENV
-
