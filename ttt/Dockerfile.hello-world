@@ -1,4 +1,6 @@
 FROM python:3.8.16-slim-bullseye
 
+RUN apt install snapd
+
 RUN python -m pip install --upgrade pip
 RUN pip install mypy flake8 coverage
