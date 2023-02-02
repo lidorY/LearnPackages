@@ -11,6 +11,8 @@ on:
   pull_request:
     branches:
       - main
+    paths:
+      - ttt/Dockerfile.hello-world
       
 jobs:
   push_to_registry:
