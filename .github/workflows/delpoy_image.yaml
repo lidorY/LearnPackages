@@ -6,8 +6,8 @@ on:
   push:
     branches:
       - main
-    paths:
-      - '**Dockerfile**'
+    # paths:
+    #   - '**Dockerfile**'
   # Compare the last commit of main -> to the current commit of a PR branch.
   # (Note: To compare changes between the last pushed commit to the remote PR branch set `since_last_remote_commit: true`)
       
@@ -31,7 +31,7 @@ jobs:
 
       - name: Upload Image 1
         uses: ./.github/actions/upload_image
-        if: contains(steps.files.outputs.changes, 'ttt/Dockerfile.hello-world')
+        # if: contains(steps.files.outputs.changes, 'ttt/Dockerfile.hello-world')
         with:
           image-name: my_image
           docker-file-path: ttt/Dockerfile.hello-world
