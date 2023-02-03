@@ -17,7 +17,7 @@ jobs:
     name: Push Docker image to GitHub registry
     runs-on: ubuntu-latest
     permissions:
-      packages: read
+      packages: {read, write}
     steps:
       - uses: actions/checkout@v3
         with:
