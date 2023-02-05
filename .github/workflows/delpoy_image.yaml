@@ -7,9 +7,9 @@ on:
   push:
     branches:
       - main
-    # paths:
-    #   - '**Dockerfile**'
+    paths:
       - 'ttt/test.sh'
+    #   - '**Dockerfile**'
   # Compare the last commit of main -> to the current commit of a PR branch.
   # (Note: To compare changes between the last pushed commit to the remote PR branch set `since_last_remote_commit: true`)
       
