@@ -8,7 +8,7 @@ jobs:
    name: test
    runs-on: ubuntu-latest
    permissions:
-      packages: read
+      packages: write
    container:
      image: ghcr.io/lidory/learnpackages/my_image:main
      credentials:
