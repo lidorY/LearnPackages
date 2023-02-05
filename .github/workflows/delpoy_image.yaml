@@ -33,7 +33,8 @@ jobs:
 
       - name: Upload Image 1
         uses: ./.github/actions/upload_image
-        # if: contains(steps.files.outputs.changes, 'ttt/Dockerfile.hello-world')
+        if: |
+          contains(steps.files.outputs.changes, 'ttt/Dockerfile.hello-world') || contains(steps.files.outputs.changes, 'ttt/test.sh')
         with:
           image-name: img1
           docker-file-path: ttt/Dockerfile.hello-world
