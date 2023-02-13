@@ -9,11 +9,11 @@ jobs:
    runs-on: ubuntu-latest
    permissions:
       packages: write
-   container:
-     image: ghcr.io/lidory/learnpackages/img1:main
-     credentials:
-       username: ${{ github.actor }}
-       password: ${{ secrets.GITHUB_TOKEN }}
+  #  container:
+  #    image: ghcr.io/lidory/learnpackages/img1:main
+  #    credentials:
+  #      username: ${{ github.actor }}
+  #      password: ${{ secrets.GITHUB_TOKEN }}
    steps:
     - name: Checkout
       uses: actions/checkout@v2 # Required to mount the Github Workspace to a volume
