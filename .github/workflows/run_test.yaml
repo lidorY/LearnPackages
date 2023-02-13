@@ -10,7 +10,7 @@ jobs:
    permissions:
       packages: write
    container:
-     image: ghcr.io/lidory/learnpackages/my_image:main
+     image: ghcr.io/lidory/learnpackages/img1:main
      credentials:
        username: ${{ github.actor }}
        password: ${{ secrets.GITHUB_TOKEN }}
