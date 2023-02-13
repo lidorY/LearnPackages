@@ -1,2 +1,6 @@
 FROM alpine
-CMD ["echo", "Hello2!"]
+
+RUN echo val: $TEST
+RUN echo "val: $TEST"
+
+# CMD ["echo", "Hello2!"]
