@@ -36,6 +36,11 @@ runs:
         images: |
           ghcr.io/${{ github.repository }}/${{ inputs.image-name}}
         github-token: ${{ inputs.password }}
+    - run: |
+          string_to_split=${{ steps.meta.outputs.tags }}
+          IFS=':' read -ra split_string <<< "$string_to_split"
+          echo "${split_string[0]}"
+      shell: bash
     - uses: docker/build-push-action@v3
       with:
         push: true
