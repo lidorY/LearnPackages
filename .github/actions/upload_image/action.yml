@@ -37,6 +37,7 @@ runs:
           ghcr.io/${{ github.repository }}/${{ inputs.image-name}}
         github-token: ${{ inputs.password }}
     - run: echo ${{ steps.meta.outputs.tags }}
+      shell: bash
     - uses: docker/build-push-action@v3
       with:
         push: true
