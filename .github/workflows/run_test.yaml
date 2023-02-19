@@ -7,7 +7,6 @@ on:
   # workflow_run:
     # workflows: [Publish Tests container Docker Image]
 
-
 jobs:
  end2end_test:
    name: test
