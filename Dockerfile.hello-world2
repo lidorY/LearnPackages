@@ -3,4 +3,4 @@ FROM alpine
 RUN echo val: $TEST
 RUN echo "val: $TEST"
 
-CMD ["sh", "-c", "echo Hello2! $TEST"]
+CMD ["sh", "-c", "echo Hello3"]
