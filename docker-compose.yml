@@ -3,4 +3,4 @@ version: '3'
 services:
   serv:
     hostname: "test"
-    image: ghcr.io/lidory/learnpackages/img1:main
+    image: ghcr.io/lidory/learnpackages/img1:latest
