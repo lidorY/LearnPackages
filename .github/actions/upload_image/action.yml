@@ -40,5 +40,5 @@ runs:
       with:
         push: true
         file: "${{ inputs.docker-file-path}}"
-        tags: ${{ steps.meta.outputs.tags }}
+        #tags: ${{ steps.meta.outputs.tags }}
         context: ${{ inputs.context }}
