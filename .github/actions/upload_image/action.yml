@@ -39,11 +39,13 @@ runs:
     - run: |
           string_to_split=${{ steps.meta.outputs.tags }}
           IFS=':' read -ra split_string <<< "$string_to_split"
-          echo "${split_string[0]}"
+          echo "IMG_TAG=${split_string[0]}" >> $GITHUB_ENV 
       shell: bash
+    - run: echo ${{ env.IMG_TAG }}
+      shell: bash 
     - uses: docker/build-push-action@v3
       with:
         push: true
         file: "${{ inputs.docker-file-path}}"
-        tags: "ghcr.io/lidory/learnpackages/img1"
+        tags: "${{ env.IMG_TAG }}"
         context: ${{ inputs.context }}
