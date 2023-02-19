@@ -36,9 +36,10 @@ runs:
         images: |
           ghcr.io/${{ github.repository }}/${{ inputs.image-name}}
         github-token: ${{ inputs.password }}
+    - run: echo ${{ steps.meta.outputs.tags }}
     - uses: docker/build-push-action@v3
       with:
         push: true
         file: "${{ inputs.docker-file-path}}"
-        tags: "master"
+        tags: ${{ steps.meta.outputs.tags }}
         context: ${{ inputs.context }}
