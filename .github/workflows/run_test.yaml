@@ -37,7 +37,7 @@ jobs:
       id: wait-for-build
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
-        checkName: 'Publish Tests container Docker Image'
+        checkName: 'Push Docker image to GitHub registry'
         ref: ${{ github.event.pull_request.head.sha || github.sha }}
 
     - name: Log in to the Container registry
