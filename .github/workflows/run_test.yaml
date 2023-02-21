@@ -27,8 +27,8 @@ jobs:
       id: wait-for-build
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
-        checkName: 'Upload Image 1'
-        ref: ${{ github.event.pull_request.head.sha || github.sha }}
+        checkName: 'push_to_registry'
+        # ref: ${{ github.event.pull_request.head.sha || github.sha }}
 
     - name: Log in to the Container registry
       uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
