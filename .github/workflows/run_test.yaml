@@ -25,7 +25,7 @@ jobs:
     - name: Wait for image deploy
       uses: lewagon/wait-on-check-action@v1.3.1
       with:
-        ref: ${{ github.ref }}
+        ref: master
         check-name: 'Upload Image 1'
         repo-token: ${{ secrets.GITHUB_TOKEN }}
         wait-interval: 10  
