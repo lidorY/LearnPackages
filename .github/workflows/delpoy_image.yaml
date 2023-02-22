@@ -23,7 +23,8 @@ jobs:
         with:
           fetch-depth: 0  # OR "2" -> To retrieve the preceding commit.
       - if: "!(contains(steps.files.outputs.changes, 'Dockerfile') || contains(steps.files.outputs.changes, 'ttt/test.sh'))"
-        run: exit 0
+        run: exit 1
+        shell: bash
       # Example 1
       - id: files
         uses: ./.github/actions/list_changed_files
