@@ -5,6 +5,9 @@ on:
   push:
     branches:
       - main
+    paths:
+      - 'ttt/test.sh'
+      - '**Dockerfile**'
   pull_request:
     types: [ opened, reopened, synchronize ]
 
@@ -19,7 +22,8 @@ jobs:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0  # OR "2" -> To retrieve the preceding commit.
-
+      - if: "!(contains(steps.files.outputs.changes, 'Dockerfile') || contains(steps.files.outputs.changes, 'ttt/test.sh'))"
+        run: exit 0
       # Example 1
       - id: files
         uses: ./.github/actions/list_changed_files
