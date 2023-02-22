@@ -21,23 +21,14 @@ jobs:
    steps:
     - name: Checkout
       uses: actions/checkout@v2 # Required to mount the Github Workspace to a volume
-
-    # - name: Wait for tests to succeed
-    #   uses: lewagon/wait-on-check-action@v1.3.1
-    #   with:
-    #     ref: master
-    #     check-name: 'push_to_registry'
-    #     repo-token: ${{ secrets.GITHUB_TOKEN }}
-    #     wait-interval: 10
-
-
-
+      
+      
     - name: Wait for build to succeed
       uses: fountainhead/action-wait-for-check@v1.1.0
       id: wait-for-build
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
-        checkName: 'Publish Tests container Docker Image'
+        checkName: 'Push Docker image to GitHub registry'
         ref: ${{ github.event.pull_request.head.sha || github.sha }}
 
     - name: Log in to the Container registry
