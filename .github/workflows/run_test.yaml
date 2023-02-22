@@ -22,7 +22,6 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2 # Required to mount the Github Workspace to a volume
       
-      
     - name: Wait for build to succeed
       uses: fountainhead/action-wait-for-check@v1.1.0
       id: wait-for-build
