@@ -60,7 +60,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2 # Required to mount the Github Workspace to a volume
-      - run: ${{ env.LIDOR }}
+      - run: echo "hello - ${{ env.LIDOR }}"
     # - uses: ./.github/actions/set_vars
     # - name: Analysing the code with mypy
     #   run: |
