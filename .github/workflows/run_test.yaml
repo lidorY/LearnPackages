@@ -28,7 +28,6 @@ jobs:
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
         image: ghcr.io/lidory/learnpackages/img2:latest
-        shell: bash
         run:  echo hello ${{ env.LIDOR }}
 
 
