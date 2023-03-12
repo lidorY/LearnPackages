@@ -44,6 +44,7 @@ jobs:
     #     docker-compose -f docker-compose.yml up
 
   
+  
   test_container_image:
     strategy:
       max-parallel: 1
