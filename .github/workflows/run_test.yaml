@@ -8,19 +8,19 @@ on:
     workflows: [Publish Tests container Docker Image]
 
 jobs:
- end2end_test:
-   strategy:
+  end2end_test:
+    strategy:
     max-parallel: 1
-   name: test
-   runs-on: ubuntu-latest
-   permissions:
+    name: test
+    runs-on: ubuntu-latest
+    permissions:
       packages: write
   #  container:
   #    image: ghcr.io/lidory/learnpackages/img1:main
   #    credentials:
   #      username: ${{ github.actor }}
   #      password: ${{ secrets.GITHUB_TOKEN }}
-   steps:
+    steps:
     - name: Checkout
       uses: actions/checkout@v2 # Required to mount the Github Workspace to a volume
       
@@ -42,22 +42,22 @@ jobs:
     # - name: run
     #   run: |
     #     docker-compose -f docker-compose.yml up
-  
+
   
   test_container_image:
     strategy:
       max-parallel: 1
     name: test_container_image
     container:
-     image: ghcr.io/lidory/learnpackages/img1:main
-     credentials:
-       username: ${{ github.actor }}
-       password: ${{ secrets.GITHUB_TOKEN }}
+      image: ghcr.io/lidory/learnpackages/img1:main
+      credentials:
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
     steps:
-     - name: Checkout
-       uses: actions/checkout@v2 # Required to mount the Github Workspace to a volume
-     - run: ${{ env.LIDOR }}
-       shell: bash 
+      - name: Checkout
+        uses: actions/checkout@v2 # Required to mount the Github Workspace to a volume
+      - run: ${{ env.LIDOR }}
+        shell: bash 
 
     # - uses: ./.github/actions/set_vars
     # - name: Analysing the code with mypy
