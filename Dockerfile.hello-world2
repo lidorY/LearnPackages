@@ -1,5 +1,5 @@
 FROM alpine
 
-#ENV LIDOR="TEST_val"
+ENV LIDOR=myval
 
-CMD ["sh", "-c", "echo Hello11118"]
+#CMD ["sh", "-c", "echo Hello11118"]
