@@ -47,6 +47,9 @@ jobs:
   test_container_image:
     strategy:
       max-parallel: 1
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
     name: test_container_image
     container:
       image: ghcr.io/lidory/learnpackages/img1:main
