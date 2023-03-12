@@ -5,9 +5,6 @@ on:
   push:
     branches:
       - main
-    paths:
-      - 'ttt/test.sh'
-      - '**Dockerfile**'
   pull_request:
     types: [ opened, reopened, synchronize ]
 
@@ -34,10 +31,11 @@ jobs:
 
       - name: Upload Image 1
         uses: ./.github/actions/upload_image
-        if: |
-          contains(steps.files.outputs.changes, 'Dockerfile.hello-world2') || contains(steps.files.outputs.changes, 'ttt/test.sh')
+        # if: |
+          # contains(steps.files.outputs.changes, 'Dockerfile.hello-world2')   
+        # || contains(steps.files.outputs.changes, 'ttt/test.sh')
         with:
-          image-name: img1
+          image-name: img2
           docker-file-path: Dockerfile.hello-world2
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
