@@ -1,5 +1,5 @@
 FROM alpine
 
-RUN export LIDOR="TEST_val"
+ENV LIDOR="TEST_val"
  
 CMD ["sh", "-c", "echo Hello11118"]
