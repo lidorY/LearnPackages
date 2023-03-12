@@ -1,7 +1,5 @@
-FROM python:3.8.16-slim-bullseye
+FROM alpine
 
+ENV LIDOR=myval
 
-
-RUN python -m pip install --upgrade pip
-RUN pip install mypy flake8 coverage
-
+#CMD ["sh", "-c", "echo Hello11118"]
