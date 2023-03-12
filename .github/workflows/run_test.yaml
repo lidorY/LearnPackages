@@ -25,10 +25,6 @@ jobs:
         intervalSeconds: 10
     - uses: addnab/docker-run-action@v3
           with:
-                image: ghcr.io/lidory/learnpackages/img2:latest
-                run:  echo hello ${{ env.LIDOR }}
-    - uses: addnab/docker-run-action@v3
-          with:
             username: ${{ github.actor }}
             password: ${{ secrets.GITHUB_TOKEN }}
             registry: gcr.io
