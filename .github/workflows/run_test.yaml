@@ -54,7 +54,7 @@ jobs:
       packages: write
     name: test_container_image
     container:
-      image: ghcr.io/lidory/learnpackages/img1:latest
+      image: ghcr.io/lidory/learnpackages/img2:latest
       credentials:
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
