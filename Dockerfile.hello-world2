@@ -3,4 +3,6 @@ FROM alpine
 RUN echo val: $TEST
 RUN echo "val: $TEST"
 
+ARG LIDOR="TEST_val"
+ 
 CMD ["sh", "-c", "echo Hello11118"]
