@@ -27,23 +27,7 @@ jobs:
           with:
                 image: ghcr.io/lidory/learnpackages/img2:latest
                 run:  echo hello ${{ env.LIDOR }}
-
-  test_container_image:
-    strategy:
-      max-parallel: 1
-    runs-on: ubuntu-latest
-    permissions:
-      packages: write
-    name: test_container_image
-    container:
-      image: ghcr.io/lidory/learnpackages/img2:latest
-      credentials:
-        username: ${{ github.actor }}
-        password: ${{ secrets.GITHUB_TOKEN }}
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2 # Required to mount the Github Workspace to a volume
-      - uses: addnab/docker-run-action@v3
+    - uses: addnab/docker-run-action@v3
           with:
             username: ${{ github.actor }}
             password: ${{ secrets.GITHUB_TOKEN }}
@@ -51,6 +35,23 @@ jobs:
             image: lidory/learnpackages/img2:latest
             shell: bash
             run:  echo hello ${{ env.LIDOR }}
+
+
+  # test_container_image:
+  #   strategy:
+  #     max-parallel: 1
+  #   runs-on: ubuntu-latest
+  #   permissions:
+  #     packages: write
+  #   name: test_container_image
+  #   container:
+  #     image: ghcr.io/lidory/learnpackages/img2:latest
+  #     credentials:
+  #       username: ${{ github.actor }}
+  #       password: ${{ secrets.GITHUB_TOKEN }}
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v2 # Required to mount the Github Workspace to a volume
 
     # - uses: ./.github/actions/set_vars
     # - name: Analysing the code with mypy
