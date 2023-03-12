@@ -27,8 +27,7 @@ jobs:
       with:
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
-        registry: gcr.io
-        image: lidory/learnpackages/img2:latest
+        image: ghcr.io/lidory/learnpackages/img2:latest
         shell: bash
         run:  echo hello ${{ env.LIDOR }}
 
