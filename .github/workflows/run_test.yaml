@@ -10,7 +10,7 @@ on:
 jobs:
   end2end_test:
     strategy:
-    max-parallel: 1
+      max-parallel: 1
     name: test
     runs-on: ubuntu-latest
     permissions:
