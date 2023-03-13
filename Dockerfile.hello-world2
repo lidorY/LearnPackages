@@ -1,5 +1,7 @@
 FROM alpine
 
-ENV LIDOR=myval
+# ENV LIDOR=myval
+
+RUN "export LIDOR=test_var" 
 
 #CMD ["sh", "-c", "echo Hello11118"]
